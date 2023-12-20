@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Initialization script to create a symlink for the pre-commit hook.
+
+# Path to the custom pre-commit hook (relative to the repository root)
+CUSTOM_HOOK_PATH="hooks/pre-commit"
+
+# The .git/hooks directory
+GIT_HOOKS_DIR=".git/hooks"
+
+# Full path to the target pre-commit hook in .git/hooks
+PRE_COMMIT_HOOK_PATH="$GIT_HOOKS_DIR/pre-commit"
+
+# Check if the custom hook exists
+if [ ! -f "$CUSTOM_HOOK_PATH" ]; then
+    echo "Custom pre-commit hook not found at $CUSTOM_HOOK_PATH."
+    exit 1
+fi
+
+# Create the hooks directory if it doesn't exist
+if [ ! -d "$GIT_HOOKS_DIR" ]; then
+    echo "Creating hooks directory..."
+    mkdir "$GIT_HOOKS_DIR"
+fi
+
+# Create a symlink to the custom pre-commit hook
+ln -sf "../../$CUSTOM_HOOK_PATH" "$PRE_COMMIT_HOOK_PATH"
+echo "Symlink created for pre-commit hook."
+
+# Make sure the hook is executable
+chmod +x "$CUSTOM_HOOK_PATH"
+echo "Pre-commit hook is now executable."

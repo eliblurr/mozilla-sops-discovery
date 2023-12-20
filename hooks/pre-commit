@@ -1,0 +1,39 @@
+#!/bin/sh
+
+# Temporary stash to hold the current state without the staged changes
+git stash save -q --keep-index
+
+# Directory to hold the encrypted copies
+temp_dir=$(mktemp -d)
+
+# Function to clean up temporary files
+cleanup() {
+    rm -rf "$temp_dir"
+    git reset -q HEAD
+    git stash pop -q
+}
+trap cleanup EXIT
+
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.\(yaml\|yml\)$')
+
+# Encrypt and replace each staged file
+for file in $FILES; do
+    # Copy the staged version to the temporary directory
+    git show ":$file" > "$temp_dir/$file"
+
+    # Run the encryption command here
+    # Replace 'encrypt_command' with your encryption command
+    sops -e -i "$temp_dir/$file"
+
+    if [ $? -ne 0 ]; then
+        echo "Pre-commit hook failed (command returned error) on file: $file"
+        exit 1
+    fi
+
+    # Stage the encrypted file
+    mv "$temp_dir/$file" "$file"
+    git add "$file"
+done
+
+# The script will exit here, the cleanup function will be called automatically
+exit 0
