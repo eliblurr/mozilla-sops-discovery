@@ -12,7 +12,7 @@ echo "created tmp directory: $temp_dir"
 cleanup() {
     rm -rf "$temp_dir"
     git reset -q HEAD
-    git stash pop -q
+    # git stash pop -q
 }
 # trap cleanup EXIT
 
@@ -20,23 +20,31 @@ FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.\(yaml\|yml\)$
 
 # Encrypt and replace each staged file
 for file in $FILES; do
+
+    # exclude .sops config file
+    if echo "$file" | grep -Eq '\.sops\.y(a)?ml$'; then
+        continue
+    fi
+
     # Copy the staged version to the temporary directory
     echo "copy the staged version to the temporary directory"
     git show ":$file" > "$temp_dir/$file"
 
     # Run the encryption command here
-    echo "encrypt temp files"
-    sops -e -i "$temp_dir/$file"
+    # echo "encrypt temp files"
+    # sops -e -i "$temp_dir/$file"
 
-    if [ $? -ne 0 ]; then
-        echo "Pre-commit hook failed (command returned error) on file: $file"
-        exit 1
-    fi
+    # if [ $? -ne 0 ]; then
+    #     echo "Pre-commit hook failed (command returned error) on file: $file"
+    #     exit 1
+    # fi
 
     # Stage the encrypted file
-    mv "$temp_dir/$file" "$file"
-    git add "$file"
+    # mv "$temp_dir/$file" "$file"
+    # git add "$file"
 done
 
 # The script will exit here, the cleanup function will be called automatically
 exit 0
+
+# exclude .sops.yaml from list of files to encrypt 

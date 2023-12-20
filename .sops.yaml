@@ -1,5 +1,5 @@
 creation_rules:
-  - path_regexp: \.(yml|yaml)$
-    encrypted_regex: "^(.*[Pp]assword.*)$"
-    age: >-
-      age1pvk6dvp7zwwmzlknzc8gqzrk4yygmpa35ze20jcf8scuk48lhqdsevf6jx
+    - path_regexp: \.(yml|yaml)$
+      encrypted_regex: ^(.*[Pp]assword.*)$
+      age: >-
+        age109ahnmyr49pq0lq9kkkrvqr65xaj7hxwsksh9gn70dmu9dcau5jqjyam80
