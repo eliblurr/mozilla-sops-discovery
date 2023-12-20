@@ -33,7 +33,7 @@ for file in $FILES; do
         exit 1
     fi
 
-#     # Stage the encrypted file
+    # Stage the encrypted file
     mv "$temp_dir/$file" "$file"
     git add "$file"
 done
