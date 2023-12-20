@@ -31,17 +31,17 @@ for file in $FILES; do
     git show ":$file" > "$temp_dir/$file"
 
     # Run the encryption command here
-    # echo "encrypt temp files"
-    # sops -e -i "$temp_dir/$file"
+    echo "encrypt temp files"
+    sops -e -i "$temp_dir/$file"
 
-    # if [ $? -ne 0 ]; then
-    #     echo "Pre-commit hook failed (command returned error) on file: $file"
-    #     exit 1
-    # fi
+    if [ $? -ne 0 ]; then
+        echo "Pre-commit hook failed (command returned error) on file: $file"
+        exit 1
+    fi
 
     # Stage the encrypted file
-    # mv "$temp_dir/$file" "$file"
-    # git add "$file"
+    mv "$temp_dir/$file" "$file"
+    git add "$file"
 done
 
 # The script will exit here, the cleanup function will be called automatically
