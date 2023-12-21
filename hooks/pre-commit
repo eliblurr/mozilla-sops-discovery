@@ -7,7 +7,7 @@ git stash save -q --keep-index
 # Function to clean up
 cleanup() {
     if [ $? -ne 0 ]; then
-        echo "somethig went wrong, falling back to stashed changes..."
+        echo "something went wrong, falling back to stashed changes..."
         git stash pop -q
     else
         echo "cleaning up..."
