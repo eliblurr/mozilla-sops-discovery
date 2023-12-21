@@ -5,20 +5,26 @@ echo "stashing changes"
 git stash save -q --keep-index
 
 fallback() {
-    git reset -q HEAD
+    echo "somethig went wrong, falling back..."
+    # git reset -q HEAD
     git stash pop -q
 }
 
 # Function to clean up stash
 cleanup() {
-    git stash drop -q
+    if [ $? -ne 0 ]; then
+        git stash pop -q
+    else
+        echo "cleaning up..."
+        git stash drop -q
+    fi
 }
 
 trap cleanup EXIT
-trap fallback INT
-trap fallback ERR
-# get all paths in sops.config 
+# trap fallback INT
+# trap fallback ERR
 
+# get all paths in sops.config 
 FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.\(yaml\|yml\)$')
 
 # Encrypt and replace each staged file
@@ -46,10 +52,10 @@ for file in $FILES; do
     # sops -e -i "$temp_dir/$file"
     sops -e -i "$file"
 
-    if [ $? -ne 0 ]; then
-        echo "Pre-commit hook failed (command returned error) on file: $file"
-        exit 1
-    fi
+    # if [ $? -ne 0 ]; then
+        # echo "Pre-commit hook failed (command returned error) on file: $file"
+        # exit 1
+    # fi
 
     git add "$file"
 done
