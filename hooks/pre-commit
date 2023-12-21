@@ -4,17 +4,20 @@
 echo "stashing changes"
 git stash save -q --keep-index
 
-# Directory to hold the encrypted copies
-temp_dir=$(mktemp -d)
-echo "created tmp directory: $temp_dir"
-
-# Function to clean up temporary files
-cleanup() {
-    rm -rf "$temp_dir"
-    # git reset -q HEAD
-    # git stash pop -q
+fallback() {
+    git reset -q HEAD
+    git stash pop -q
 }
-# trap cleanup EXIT
+
+# Function to clean up stash
+cleanup() {
+    git stash drop -q
+}
+
+trap cleanup EXIT
+trap fallback INT
+trap fallback ERR
+# get all paths in sops.config 
 
 FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.\(yaml\|yml\)$')
 
@@ -48,12 +51,7 @@ for file in $FILES; do
         exit 1
     fi
 
-    # Stage the encrypted file
-    # mv "$temp_dir/$file" "$file"
     git add "$file"
 done
 
-# The script will exit here, the cleanup function will be called automatically
 exit 0
-
-# exclude .sops.yaml from list of files to encrypt 
