@@ -11,7 +11,7 @@ echo "created tmp directory: $temp_dir"
 # Function to clean up temporary files
 cleanup() {
     rm -rf "$temp_dir"
-    git reset -q HEAD
+    # git reset -q HEAD
     # git stash pop -q
 }
 # trap cleanup EXIT
@@ -20,6 +20,16 @@ FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.\(yaml\|yml\)$
 
 # Encrypt and replace each staged file
 for file in $FILES; do
+
+    # Extract the directory path from $file
+    file_dir=$(dirname "$file")
+    echo "$file_dir"
+
+    # Create the directory structure in $temp_dir
+    mkdir -p "$temp_dir/$file_dir"
+
+    echo "$file"
+    git show ":$file" > "$temp_dir/$file"
 
     # exclude .sops config file
     if echo "$file" | grep -Eq '\.sops\.y(a)?ml$'; then
@@ -31,6 +41,7 @@ for file in $FILES; do
     git show ":$file" > "$temp_dir/$file"
 
     # Run the encryption command here
+    # try to encrypt oonly if it is a yaml
     echo "encrypt temp files"
     sops -e -i "$temp_dir/$file"
 

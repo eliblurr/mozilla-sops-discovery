@@ -3,3 +3,7 @@ creation_rules:
       encrypted_regex: ^(.*[Pp]assword.*)$
       age: >-
         age109ahnmyr49pq0lq9kkkrvqr65xaj7hxwsksh9gn70dmu9dcau5jqjyam80
+    - path_regexp: .*/nested\/.*\.(yaml|yml)$
+      encrypted_regex: ^(.*[Nn]h.*)$
+      age: >-
+        age109ahnmyr49pq0lq9kkkrvqr65xaj7hxwsksh9gn70dmu9dcau5jqjyam80
