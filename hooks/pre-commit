@@ -16,7 +16,6 @@ cleanup() {
 }
 trap cleanup EXIT
 
-# get all paths in sops.config 
 FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.\(yaml\|yml\)$')
 
 # Encrypt and replace each staged file
