@@ -2,8 +2,8 @@ creation_rules:
     - path_regexp: \.(yml|yaml)$
       encrypted_regex: ^(.*[Pp]assword.*)$
       age: >-
-        age1pvk6dvp7zwwmzlknzc8gqzrk4yygmpa35ze20jcf8scuk48lhqdsevf6jx
+        age10uuwjxr0x0ge4mm2c7u3hm207dwc4jpwe46gtfk2c5kusqtg55ds0jr4uv
     - path_regexp: .*/nested\/.*\.(yaml|yml)$
       encrypted_regex: ^(.*[Nn]h.*)$
       age: >-
-        age1pvk6dvp7zwwmzlknzc8gqzrk4yygmpa35ze20jcf8scuk48lhqdsevf6jx
+        age10uuwjxr0x0ge4mm2c7u3hm207dwc4jpwe46gtfk2c5kusqtg55ds0jr4uv

@@ -21,19 +21,15 @@ FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.\(yaml\|yml\)$
 
 # Encrypt and replace each staged file
 for file in $FILES; do
-
     # exclude .sops config file
     if echo "$file" | grep -Eq '\.sops\.y(a)?ml$'; then
         continue
     fi
-
     echo "encrypting file: $file"
     sops -e -i "$file"
-
     if [ $? -ne 0 ]; then
         exit 1
     fi
-
     git add "$file"
 done
 
