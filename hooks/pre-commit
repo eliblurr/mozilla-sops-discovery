@@ -13,6 +13,7 @@ fallback() {
 # Function to clean up stash
 cleanup() {
     if [ $? -ne 0 ]; then
+        echo "somethig went wrong, falling back..."
         git stash pop -q
     else
         echo "cleaning up..."
@@ -60,4 +61,4 @@ for file in $FILES; do
     git add "$file"
 done
 
-exit 0
+# exit 0
