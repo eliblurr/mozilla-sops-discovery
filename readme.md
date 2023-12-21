@@ -11,3 +11,5 @@
 
 ### Flux Integretion
 1. Create flux Kustomization for secret management
+
+https://autrilla.gitbooks.io/sops/content/uage.html
