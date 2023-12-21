@@ -22,14 +22,11 @@ FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.\(yaml\|yml\)$
 for file in $FILES; do
 
     # Extract the directory path from $file
-    file_dir=$(dirname "$file")
-    echo "$file_dir"
+    # file_dir=$(dirname "$file")
+    # echo "$file_dir"
 
     # Create the directory structure in $temp_dir
-    mkdir -p "$temp_dir/$file_dir"
-
-    echo "$file"
-    git show ":$file" > "$temp_dir/$file"
+    # mkdir -p "$temp_dir/$file_dir"
 
     # exclude .sops config file
     if echo "$file" | grep -Eq '\.sops\.y(a)?ml$'; then
@@ -37,13 +34,14 @@ for file in $FILES; do
     fi
 
     # Copy the staged version to the temporary directory
-    echo "copy the staged version to the temporary directory"
-    git show ":$file" > "$temp_dir/$file"
+    # echo "copy the staged version to the temporary directory"
+    # git show ":$file" > "$temp_dir/$file"
 
     # Run the encryption command here
     # try to encrypt oonly if it is a yaml
     echo "encrypt temp files"
-    sops -e -i "$temp_dir/$file"
+    # sops -e -i "$temp_dir/$file"
+    sops -e -i "$file"
 
     if [ $? -ne 0 ]; then
         echo "Pre-commit hook failed (command returned error) on file: $file"
@@ -51,7 +49,7 @@ for file in $FILES; do
     fi
 
     # Stage the encrypted file
-    mv "$temp_dir/$file" "$file"
+    # mv "$temp_dir/$file" "$file"
     git add "$file"
 done
 
