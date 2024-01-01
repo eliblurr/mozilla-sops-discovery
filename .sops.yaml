@@ -1,9 +1,10 @@
 creation_rules:
-  - filename_regex: ^\./secret\.yaml$
+  - path_regex: 'nested/.*\.yaml$'
     encrypted_regex: ^(.*[Nn]h.*)$
     age: >-
-      age10uuwjxr0x0ge4mm2c7u3hm207dwc4jpwe46gtfk2c5kusqtg55ds0jr4uv
-  - filename_regex: ^\./nested/secret7\.yaml$
-    encrypted_regex: ^(.*[Pp]assword.*)$
+      age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0
+  
+  - filename_regex: 'test.yaml$'
+    encrypted_regex: ^(.*[Nn]h.*)$
     age: >-
-      age10uuwjxr0x0ge4mm2c7u3hm207dwc4jpwe46gtfk2c5kusqtg55ds0jr4uv
+      age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0

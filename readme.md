@@ -12,6 +12,10 @@
 ### Flux Integretion
 1. Create flux Kustomization for secret management
 
+##### Notes
+- when using age or PGP make sure you set SOPS_AGE_KEY_FILE env to point to file that holds the keys
+
+
 https://autrilla.gitbooks.io/sops/content/uage.html
 https://github.com/getsops/sops
 https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/
