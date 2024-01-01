@@ -1,27 +1,10 @@
 creation_rules:
-    - path_regex: nested/secret7.yaml$
-      encrypted_regex: ^(.*[Nn]h.*)$
-      age: age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0
-    - filename_regex: test.yaml$
-      encrypted_regex: ^(.*[Nn]h.*)$
-      age: age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age:
-        - recipient: age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBNd2FrZ1VISVBNSWJBVThv
-            aDVJSkJmUG95ZnhaeFFXWXRvUE5GMHFadkdJClY3d29tNFYvemJyVG1HR3JCNnVO
-            cU1SUFV2RnIwQzhlRkc0VDFRckdTQm8KLS0tIHJyS1NYYlRwUlZZSCtjc3hxZ2V0
-            Y1l5QlZOR0dKclMwaktlcHRaR282UEkKNGnXEMFwQ3kuAPu6/ucBuG55U4LBRJKr
-            p7r1MWyMz4MnsBtOLYtYn8XFnn0ws+Ptga/tggI2v7WPPp1B/C6h0Q==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-01-01T21:20:13Z"
-    mac: ENC[AES256_GCM,data:z+rEWe3qubVNc+CuWknG1GdcjiROJ+JnPJHJpbLm0+6iCdC/ZX9nEAS09XK4WOBmdmyR6lOAePNhcvZpHNTEciBwBVK/ayy9y+vDRetP+ORWWJkTsLb7GPFQqXGhGmRfa4GPOkofxCMxbnIdsK+MkZbYREd5wQN6yjTKQ8dIQIE=,iv:Ce8jJQafkz0CBW1lq6sEAhLdbMc4lRZMTSDwYxDjls0=,tag:E/MLZXg2wEXlY3/fifRS9Q==,type:str]
-    pgp: []
+  - path_regex: 'nested/secret7.yaml$'
     encrypted_regex: ^(.*[Nn]h.*)$
-    version: 3.8.1
+    age: >-
+      age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0
+  
+  - filename_regex: 'test.yaml$'
+    encrypted_regex: ^(.*[Nn]h.*)$
+    age: >-
+      age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0
