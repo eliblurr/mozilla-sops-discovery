@@ -16,7 +16,7 @@ cleanup() {
 }
 trap cleanup EXIT
 
-FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.\(yaml\|yml\)$' | grep -Eq '\.sops\.y(a)?ml$')
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.\(yaml\|yml\)$')
 # get all file patterns to match
 
 # Encrypt and replace each staged file
