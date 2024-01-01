@@ -5,6 +5,6 @@ creation_rules:
       age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0
   
   - filename_regex: 'test.yaml$'
-    # encrypted_regex: ^(.*[Nn]h.*)$
+    encrypted_regex: ^(.*[Nn]h.*)$
     age: >-
       age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0
