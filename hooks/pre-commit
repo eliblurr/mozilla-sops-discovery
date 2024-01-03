@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
+from pathlib import Path
 import subprocess
+import yaml
 import sys
 import re
 import os
@@ -20,10 +22,34 @@ def cleanup(error_occurred):
 
 def matches_pattern(file, filename_pattern, path_pattern):
     """Checks if the file matches the given patterns."""
-    return re.search(filename_pattern, file) or re.search(path_pattern, file)
+    return (filename_pattern and re.search(filename_pattern, file)) or (path_pattern and re.search(path_pattern, file))
 
 def read_sops_config():
-    return ["nested/secret7.yaml", "test.yaml"]
+    config_path, paths, data=os.environ.get("SOPS_CONFIG_PATH"), set(), dict()
+
+    if not config_path:
+        return paths
+
+    with open(config_path, 'r') as file:
+        data = yaml.safe_load(file)
+
+    yamls = [file for file in [ *(Path('.').rglob('*.yml')), *(Path('.').rglob('*.yaml'))] if os.path.isfile(file)]
+    
+    if "creation_rules" in data:
+        data=data["creation_rules"]
+        for item in data:
+            path_regex = item.get("path_regex", "")
+            filename_regex = item.get("filename_regex", "")
+            for path in yamls:
+                if matches_pattern(str(path), filename_regex, path_regex):
+                    paths.add(str(path))
+
+    return paths
+
+def file_is_encrypted(file_path):
+    with open(file_path, 'r') as file:
+        data = yaml.safe_load(file)
+    return 'sops' in data
 
 try:
     # Temporary stash to hold the current state without the staged changes
@@ -46,9 +72,10 @@ try:
     for file in files_to_process:
         print(f"encrypting file: {file}")
         result = run_command(f"sops -e -i {file}", check=False)
+        if file_is_encrypted(file):
+            continue
         if result.returncode != 0:
-            raise Exception("Encryption failed")
-
+            raise Exception(f"Encryption failed: {file}")
         run_command(f"git add {file}")
 
 except Exception as e:

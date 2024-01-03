@@ -5,24 +5,4 @@ metadata:
 type: Opaque
 data:
     username: john-carlson
-    nh: ENC[AES256_GCM,data:YME7,iv:LmWyRgHcfxBLhyW1ZXkAJXymamFxYhrFcBPLXIFrGKc=,tag:zDf7uV5a0iYmmGHuVNGyTQ==,type:str]
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age:
-        - recipient: age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBYK0RsMStHUlNrZ0dZVnZm
-            aDh2UHN1K3pRdXJpSFZqYTl6ZHJDNXRJWndjCmxjdGNmbld0RFdLVzI2TTZlSUMv
-            RlNnaGRBU0FScU9EYjg4VG05Vk9rRUkKLS0tIDg3aFR4bFhsd0Vxa3VkSkw5OEhE
-            RUwycjcwNlZmMGpIRGRzSkdaemFXZWcKx9JnzhS8XczJGfLxCMnFiMjHuITyHnT1
-            4V+3pX7Qg87fyC7AuL9IIXLFjz4zkxrbfzu0ffRym0QW8LB+7VKhSQ==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-01-03T13:04:39Z"
-    mac: ENC[AES256_GCM,data:o5NMamnyWDeiPsnuhX+Whxwz2QAD5DL71hQeWrPTFn5ihUM+B3SzqFU+N/8d+7NqGQCgz2VJ+JHwz820AzowWcSQn3iohRLUV0b9fjBgitnfb7DnYRT7m71t6wbqdiknfJAA6zTsxlf98tbf+og3bxAR2fAEWhePsoszeZo0IAw=,iv:BfYzXaM9p36kdNNXAyr0hJ/PpkpS5ZaGVAQ2Ywmx9cM=,tag:QybjE2L8tHTiEptQ8irV9Q==,type:str]
-    pgp: []
-    encrypted_regex: ^(.*[Nn]h.*)$
-    version: 3.8.1
+    nh: ENC

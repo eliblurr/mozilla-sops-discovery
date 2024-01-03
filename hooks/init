@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
-import os
+from pathlib import Path
 import sys
+import os
+import re
 
 # Path to the custom pre-commit hook (relative to the repository root)
 CUSTOM_HOOK_PATH = "hooks/pre-commit"
@@ -40,3 +42,13 @@ if os.name != 'nt':
     os.chmod(CUSTOM_HOOK_PATH, os.stat(CUSTOM_HOOK_PATH).st_mode | 0o111)
 
 print("pre-commit hook is now executable.")
+print("setting enviroment variable SOPS_CONFIG_PATH to .sops.config path")
+    
+for file in Path('.').rglob('*'):
+    if re.search('.sops.yaml', str(file)):
+        os.environ['SOPS_CONFIG_PATH'] = str(file.absolute())
+        print(f"SUCCESS!!!enviroment variable set\nSOPS_CONFIG_PATH={file.absolute()}")
+        break
+    
+if not os.environ['SOPS_CONFIG_PATH']:
+    print("WARNING!!! failed to set enviroment variable, manually set your .sops.yaml absolute file path to SOPS_CONFIG_PATH")    
