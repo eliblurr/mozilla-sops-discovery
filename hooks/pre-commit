@@ -16,8 +16,15 @@ cleanup() {
 }
 trap cleanup EXIT
 
-FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.\(yaml\|yml\)$' | grep -v '\.sops\.y\(a\)\?ml$')
+matches_pattern() {
+    local file=$1
+    local filename_pattern=$2
+    local path_pattern=$3
+    [[ "$file" =~ $filename_pattern ]] || [[ "$file" =~ $path_pattern ]]
+}
 
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.\(yaml\|yml\)$' | grep -v '\.sops\.y\(a\)\?ml$' | grep -E './nested/secret7.yaml')
+echo $FILES
 # Encrypt and replace each staged file
 for file in $FILES; do
     echo "encrypting file: $file"

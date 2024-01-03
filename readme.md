@@ -44,3 +44,7 @@ Flexibility and Specificity:
 
 filename_regex is less specific and is ideal for applying a rule to a file type across the whole project.
 path_regex provides more control and is suited for applying rules to files in specific locations.
+
+
+Use only path regex
+works relative to dir
