@@ -44,6 +44,8 @@ def read_sops_config():
                 if matches_pattern(str(path), filename_regex, path_regex):
                     paths.add(str(path))
 
+    print(paths)
+
     return paths
 
 def file_is_encrypted(file_path):
