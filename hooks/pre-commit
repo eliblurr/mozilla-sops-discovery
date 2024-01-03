@@ -23,7 +23,7 @@ def matches_pattern(file, filename_pattern, path_pattern):
     return re.search(filename_pattern, file) or re.search(path_pattern, file)
 
 def read_sops_config():
-    pass
+    return ["nested/secret7.yaml", "test.yaml"]
 
 try:
     # Temporary stash to hold the current state without the staged changes
@@ -37,7 +37,7 @@ try:
     # Filter the files based on the pattern
     pattern = r'\.(yaml|yml)$'
     exclude_pattern = r'\.sops\.y(a)?ml$'
-    specific_patterns = ["nested/secret7.yaml", "test.yaml"]
+    specific_patterns = read_sops_config()
     files_to_process = [f for f in files if re.search(pattern, f) and not re.search(exclude_pattern, f) and any(matches_pattern(f, p, p) for p in specific_patterns)]
 
     print("\n".join(files_to_process))
