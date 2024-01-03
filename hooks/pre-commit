@@ -56,26 +56,17 @@ try:
     print("stashing changes")
     run_command("git stash save -q --keep-index")
 
-    print("stashed changes")
-
-    print(os.environ.get("SOPS_CONFIG_PATH"))
-
     # Get the list of staged files (ACM - Added, Copied, Modified)
     result = run_command("git diff --cached --name-only --diff-filter=ACM", capture_output=True)
     files = result.stdout.strip().split('\n')
 
     # Filter the files based on the pattern
     pattern = r'\.(yaml|yml)$'
-    exclude_pattern = r'\.sops\.y(a)?ml$'
-    
-    print("sd")
-    
+    exclude_pattern = r'\.sops\.y(a)?ml$'    
     specific_patterns = read_sops_config()
-
-    print(specific_patterns)
-
     files_to_process = [f for f in files if re.search(pattern, f) and not re.search(exclude_pattern, f) and any(matches_pattern(f, p, p) for p in specific_patterns)]
-    print(files_to_process)
+
+    print("Encrypting the following files")
     print("\n".join(files_to_process))
 
     # Encrypt and replace each staged file
@@ -86,7 +77,7 @@ try:
             continue
         if result.returncode != 0:
             raise Exception(f"Encryption failed: {file}")
-        # run_command(f"git add {file}")
+        run_command(f"git add {file}")
 
 except Exception as e:
     print(f"Error: {e}")
