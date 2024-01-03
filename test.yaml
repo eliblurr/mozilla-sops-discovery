@@ -24,5 +24,5 @@ sops:
     lastmodified: "2024-01-03T19:04:15Z"
     mac: ENC[AES256_GCM,data:YTUwlNjQp5t2DfkrM4P209IT+lGqqOp59/pJq67mvZHvY1pFOlm+AAoRdIcympKOBJgzj4k2N4XsVlbVZBbP3i9eogQ1JLKYc+LeVCm4XN6D65Ox9T9F4SccmZ3sN2pKweU6cMwhgvUTQXdAgnlLBJHW4ksDKRenyUNV7dl3zoE=,iv:eAfwLT5zSuWAWmRu/w+tc7ubhMyrIhDOcI5cc8IMD1Y=,tag:7a57bA1qY4Efe8yQ6swz9g==,type:str]
     pgp: []
-    encrypted_regex: ^(.*[Nn]h.*)$
+    encrypted_regex: ^(.*[Nn]h.*)$ 
     version: 3.8.1
