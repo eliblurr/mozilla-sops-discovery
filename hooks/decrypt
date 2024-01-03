@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import subprocess
+import argparse
+import yaml
+import sys
+import re
+import os
+
+CWD=""
+SOPS_CONFIG_PATH=""
+files=[]
+
+def run_command(command):
+    """Utility function to run a shell command."""
+    subprocess.run(command, shell=True)
+
+def matches_pattern(file, filename_pattern, path_pattern):
+    """Checks if the file matches the given patterns."""
+    return (filename_pattern and re.search(filename_pattern, file)) or (path_pattern and re.search(path_pattern, file))
+
+def read_sops_config():
+    config_path, paths, data=os.environ.get("SOPS_CONFIG_PATH"), set(), dict()
+    if not config_path:
+        return paths
+    with open(config_path, 'r') as file:
+        data = yaml.safe_load(file)
+    yamls = [file for file in [ *(Path('.').rglob('*.yml')), *(Path('.').rglob('*.yaml'))] if os.path.isfile(file)]
+    if "creation_rules" in data:
+        data=data["creation_rules"]
+        for item in data:
+            path_regex = item.get("path_regex", "")
+            filename_regex = item.get("filename_regex", "")
+            for path in yamls:
+                if matches_pattern(str(path), filename_regex, path_regex):
+                    paths.add(str(path))
+    return paths
+
+parser = argparse.ArgumentParser(description='Decrypt files using sops.')
+parser.add_argument('-f', '--filename', help='Filename to decrypt', required=False)
+args = parser.parse_args()
+
+if args.filename:
+    file_path = args.filename
+    if os.path.isfile(file_path):
+        files.append(file_path)
+    else:
+        print(f"invalid file path: {file_path}")
+        sys.exit(1)
+else:
+    files = read_sops_config()
+   
+for file in files:
+    # exclude .sops config file
+    if re.search(r'\.sops\.y(a)?ml$', file):
+        continue
+    print(f"decrypting file: {file}")
+    subprocess.run(f"sops -d -i '{file}'", shell=True)
+
+
