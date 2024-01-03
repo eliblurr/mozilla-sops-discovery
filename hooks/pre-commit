@@ -17,14 +17,9 @@ cleanup() {
 trap cleanup EXIT
 
 FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.\(yaml\|yml\)$' | grep -v '\.sops\.y\(a\)\?ml$')
-# get all file patterns to match
 
 # Encrypt and replace each staged file
 for file in $FILES; do
-    # exclude .sops config file
-    # if echo "$file" | grep -Eq '\.sops\.y(a)?ml$'; then
-    #     continue
-    # fi
     echo "encrypting file: $file"
     sops -e -i "$file"
     if [ $? -ne 0 ]; then

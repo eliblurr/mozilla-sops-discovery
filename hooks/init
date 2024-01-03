@@ -2,6 +2,11 @@
 
 # Initialization script to create a symlink for the pre-commit hook.
 
+# install all requirements
+# yq
+# jq
+
+
 # Path to the custom pre-commit hook (relative to the repository root)
 CUSTOM_HOOK_PATH="hooks/pre-commit"
 
