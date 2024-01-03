@@ -44,8 +44,6 @@ def read_sops_config():
                 if matches_pattern(str(path), filename_regex, path_regex):
                     paths.add(str(path))
 
-    print(paths)
-
     return paths
 
 def file_is_encrypted(file_path):
@@ -57,6 +55,8 @@ try:
     # Temporary stash to hold the current state without the staged changes
     print("stashing changes")
     run_command("git stash save -q --keep-index")
+
+    print("stashed changes")
 
     # Get the list of staged files (ACM - Added, Copied, Modified)
     result = run_command("git diff --cached --name-only --diff-filter=ACM", capture_output=True)
