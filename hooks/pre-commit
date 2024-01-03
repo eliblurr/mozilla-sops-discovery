@@ -35,8 +35,6 @@ def read_sops_config():
 
     yamls = [file for file in [ *(Path('.').rglob('*.yml')), *(Path('.').rglob('*.yaml'))] if os.path.isfile(file)]
 
-    print(len(yamls))
-
     if "creation_rules" in data:
         data=data["creation_rules"]
         for item in data:
@@ -77,7 +75,7 @@ try:
     print(specific_patterns)
 
     files_to_process = [f for f in files if re.search(pattern, f) and not re.search(exclude_pattern, f) and any(matches_pattern(f, p, p) for p in specific_patterns)]
-
+    print(files_to_process)
     print("\n".join(files_to_process))
 
     # Encrypt and replace each staged file
