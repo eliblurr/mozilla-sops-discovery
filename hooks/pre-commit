@@ -64,8 +64,6 @@ try:
     result = run_command("git diff --cached --name-only --diff-filter=ACM", capture_output=True)
     files = result.stdout.strip().split('\n')
 
-    
-
     # Filter the files based on the pattern
     pattern = r'\.(yaml|yml)$'
     exclude_pattern = r'\.sops\.y(a)?ml$'
