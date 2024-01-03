@@ -1,38 +1,59 @@
-#!/bin/sh
+#!/usr/bin/env python3
 
-# Temporary stash to hold the current state without the staged changes
-echo "stashing changes"
-git stash save -q --keep-index
+import subprocess
+import sys
+import re
+import os
 
-# Function to clean up
-cleanup() {
-    if [ $? -ne 0 ]; then
-        echo "something went wrong, falling back to stashed changes..."
-        git stash pop -q
-    else
-        echo "cleaning up..."
-        git stash drop -q
-    fi
-}
-trap cleanup EXIT
+def run_command(command, capture_output=False, check=True, text=True):
+    """Utility function to run a shell command."""
+    return subprocess.run(command, capture_output=capture_output, check=check, text=text, shell=True)
 
-matches_pattern() {
-    local file=$1
-    local filename_pattern=$2
-    local path_pattern=$3
-    [[ "$file" =~ $filename_pattern ]] || [[ "$file" =~ $path_pattern ]]
-}
+def cleanup(error_occurred):
+    """Cleans up by popping or dropping the stash based on whether an error occurred."""
+    if error_occurred:
+        print("something went wrong, falling back to stashed changes...")
+        run_command("git stash pop -q")
+    else:
+        print("cleaning up...")
+        run_command("git stash drop -q")
 
-FILES=$(git diff --cached --name-only --diff-filter=ACM | grep '\.\(yaml\|yml\)$' | grep -v '\.sops\.y\(a\)\?ml$' | grep -E './nested/secret7.yaml')
-echo $FILES
-# Encrypt and replace each staged file
-for file in $FILES; do
-    echo "encrypting file: $file"
-    sops -e -i "$file"
-    if [ $? -ne 0 ]; then
-        exit 1
-    fi
-    git add "$file"
-done
+def matches_pattern(file, filename_pattern, path_pattern):
+    """Checks if the file matches the given patterns."""
+    return re.search(filename_pattern, file) or re.search(path_pattern, file)
 
-exit 0
+def read_sops_config():
+    pass
+
+try:
+    # Temporary stash to hold the current state without the staged changes
+    print("stashing changes")
+    run_command("git stash save -q --keep-index")
+
+    # Get the list of staged files (ACM - Added, Copied, Modified)
+    result = run_command("git diff --cached --name-only --diff-filter=ACM", capture_output=True)
+    files = result.stdout.strip().split('\n')
+
+    # Filter the files based on the pattern
+    pattern = r'\.(yaml|yml)$'
+    exclude_pattern = r'\.sops\.y(a)?ml$'
+    specific_patterns = ["nested/secret7.yaml", "test.yaml"]
+    files_to_process = [f for f in files if re.search(pattern, f) and not re.search(exclude_pattern, f) and any(matches_pattern(f, p, p) for p in specific_patterns)]
+
+    print("\n".join(files_to_process))
+
+    # Encrypt and replace each staged file
+    for file in files_to_process:
+        print(f"encrypting file: {file}")
+        result = run_command(f"sops -e -i {file}", check=False)
+        if result.returncode != 0:
+            raise Exception("Encryption failed")
+
+        run_command(f"git add {file}")
+
+except Exception as e:
+    print(f"Error: {e}")
+    cleanup(True)
+    sys.exit(1)
+
+cleanup(False)

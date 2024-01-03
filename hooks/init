@@ -1,37 +1,42 @@
-#!/bin/sh
+#!/usr/bin/env python3
 
-# Initialization script to create a symlink for the pre-commit hook.
-
-# install all requirements
-# yq
-# jq
-
+import os
+import sys
 
 # Path to the custom pre-commit hook (relative to the repository root)
-CUSTOM_HOOK_PATH="hooks/pre-commit"
+CUSTOM_HOOK_PATH = "hooks/pre-commit"
 
 # The .git/hooks directory
-GIT_HOOKS_DIR=".git/hooks"
+GIT_HOOKS_DIR = ".git/hooks"
 
 # Full path to the target pre-commit hook in .git/hooks
-PRE_COMMIT_HOOK_PATH="$GIT_HOOKS_DIR/pre-commit"
+PRE_COMMIT_HOOK_PATH = os.path.join(GIT_HOOKS_DIR, "pre-commit")
 
 # Check if the custom hook exists
-if [ ! -f "$CUSTOM_HOOK_PATH" ]; then
-    echo "Custom pre-commit hook not found at $CUSTOM_HOOK_PATH."
-    exit 1
-fi
+if not os.path.isfile(CUSTOM_HOOK_PATH):
+    print(f"custom pre-commit hook not found at {CUSTOM_HOOK_PATH}.")
+    sys.exit(1)
 
 # Create the hooks directory if it doesn't exist
-if [ ! -d "$GIT_HOOKS_DIR" ]; then
-    echo "Creating hooks directory..."
-    mkdir "$GIT_HOOKS_DIR"
-fi
+if not os.path.isdir(GIT_HOOKS_DIR):
+    print("creating hooks directory...")
+    os.makedirs(GIT_HOOKS_DIR)
 
 # Create a symlink to the custom pre-commit hook
-ln -sf "../../$CUSTOM_HOOK_PATH" "$PRE_COMMIT_HOOK_PATH"
-echo "Symlink created for pre-commit hook."
+target_path = os.path.relpath(CUSTOM_HOOK_PATH, GIT_HOOKS_DIR)
+try:
+    # Remove existing symlink/file if it exists
+    if os.path.lexists(PRE_COMMIT_HOOK_PATH):
+        os.remove(PRE_COMMIT_HOOK_PATH)
 
-# Make sure the hook is executable
-chmod +x "$CUSTOM_HOOK_PATH"
-echo "Pre-commit hook is now executable."
+    os.symlink(target_path, PRE_COMMIT_HOOK_PATH)
+    print("symlink created for pre-commit hook.")
+except OSError as e:
+    print(f"error creating symlink: {e}")
+    sys.exit(1)
+
+# Make sure the hook is executable (only necessary on Unix-like systems)
+if os.name != 'nt':
+    os.chmod(CUSTOM_HOOK_PATH, os.stat(CUSTOM_HOOK_PATH).st_mode | 0o111)
+
+print("pre-commit hook is now executable.")
