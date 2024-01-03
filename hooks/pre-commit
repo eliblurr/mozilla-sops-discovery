@@ -66,14 +66,10 @@ try:
     specific_patterns = read_sops_config()
     files_to_process = [f for f in files if re.search(pattern, f) and not re.search(exclude_pattern, f) and any(matches_pattern(f, p, p) for p in specific_patterns)]
 
-    print("Encrypting the following files")
-    print("------------------------------")
-    print("\n".join(files_to_process))
-
     # Encrypt and replace each staged file
     for file in files_to_process:
         if file_is_encrypted(file):
-            print(f"skipping file:{file}, slready encrypted")
+            print(f"skipping file:{file}, already encrypted")
             continue
         print(f"encrypting file: {file}")
         result = run_command(f"sops -e -i {file}", check=False) 
