@@ -67,6 +67,7 @@ try:
     files_to_process = [f for f in files if re.search(pattern, f) and not re.search(exclude_pattern, f) and any(matches_pattern(f, p, p) for p in specific_patterns)]
 
     print("Encrypting the following files")
+    print("------------------------------")
     print("\n".join(files_to_process))
 
     # Encrypt and replace each staged file
