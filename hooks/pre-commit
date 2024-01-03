@@ -62,11 +62,14 @@ try:
     result = run_command("git diff --cached --name-only --diff-filter=ACM", capture_output=True)
     files = result.stdout.strip().split('\n')
 
-    print("sd")
+    
 
     # Filter the files based on the pattern
     pattern = r'\.(yaml|yml)$'
     exclude_pattern = r'\.sops\.y(a)?ml$'
+    
+    print("sd")
+    
     specific_patterns = read_sops_config()
     files_to_process = [f for f in files if re.search(pattern, f) and not re.search(exclude_pattern, f) and any(matches_pattern(f, p, p) for p in specific_patterns)]
 
