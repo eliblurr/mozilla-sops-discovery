@@ -17,8 +17,10 @@ def cleanup(error_occurred):
         print("something went wrong, falling back to stashed changes...")
         run_command("git stash pop -q")
     else:
-        print("cleaning up...")
-        run_command("git stash drop -q")
+        stash = subprocess.run(["git", "stash", "list"], capture_output=True, text=True, check=True)
+        if result.stdout.strip():
+            print("cleaning up...")
+            run_command("git stash drop -q")
 
 def matches_pattern(file, filename_pattern, path_pattern):
     """Checks if the file matches the given patterns."""
