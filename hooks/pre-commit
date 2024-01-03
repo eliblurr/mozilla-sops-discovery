@@ -18,7 +18,7 @@ def cleanup(error_occurred):
         run_command("git stash pop -q")
     else:
         stash = subprocess.run(["git", "stash", "list"], capture_output=True, text=True, check=True)
-        if result.stdout.strip():
+        if result.stdout and result.stdout.strip():
             print("cleaning up...")
             run_command("git stash drop -q")
 
