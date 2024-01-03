@@ -5,7 +5,7 @@ metadata:
 type: Opaque
 data:
     username: john-carlson
-    nh: ENC[AES256_GCM,data:9vIwsPEH,iv:XTPzvgSG6NokqILOw+rfJ4ZLKwH1h6SVLHLrGf1ZErY=,tag:X9gJfxDTOnmNrvBLqJn/JA==,type:str]
+    nh: ENC[AES256_GCM,data:bRR7,iv:pq0MzYOAxk3dKT6ZLqKwFXncGYtYhz9Splh8/JNfhAs=,tag:GMl2n91902tjfE1VqK1ffQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -15,14 +15,14 @@ sops:
         - recipient: age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBXemI5Wmk2MGpGV2hzMEg5
-            Ti91S2dnVDBvZVFMZmY1U2JRYmRDK0pRN0dFCi91MmVsVGp1UW9idk9lbHU3K2FI
-            UkRBQkxUd1ZNSkR6QWV6RDBOSWZ0SXMKLS0tIG82SWc2U3U0aDlzMnVqUWN1UitT
-            RGNqZTErYUd0dlNQSE9OMjU4Vk1YWGMKpsRLSdB6UXGPBoYYEvYUibaVJh53+mdz
-            a0sPuw/o1yAqJfiI3V4BP07X+Ae3IrcygIi98OQ5kKktqOSW5ZwSYA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA4ekcrSi91MW9IMkNSbFJ6
+            eGs0WHVZWEpjMDl5UHVYZXg5TUZyaVFING04CjM4RGppZGZ2UDVXdUpuSlhmYUpq
+            d3FvVHJOTzVZbzQ1MWR0SSt0OTUwUlkKLS0tIHRycVVESGpMRGVuNUVHZjB1VTVw
+            cWFZTEIySzlaVE9LczdXSWlvOStRTlEK+iWibskHzsnPFSYHXartYqCtpCuUuU/n
+            fcqTxVgeg1j4TTz4IM8IqNXVhj0kWGCrxeVNDgY/eUCgGgHc1VK8zg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-01-03T19:01:08Z"
-    mac: ENC[AES256_GCM,data:rV+EVbHaTFVI1y28NQHRXONYU9GOHoz8eERsVEzL3YfhckcmS9wJ2OLjA7ezAKMWNl17Ey7iDS3d2vFbCRUWwYYqsZHH/Apoch/M25UKX1Hf+/egpfmO0nM7TxckKjQVyb8gnB0OV9W0+1NcNONgsVmexoyx7PEu0RmHo8XnVxk=,iv:38xeoTthdEAzfUXfMp8c+kAxqdC8z9F5gNru/WrvN/k=,tag:bjMbrIYL+Z3GZLRLdp1o/Q==,type:str]
+    lastmodified: "2024-01-03T19:04:15Z"
+    mac: ENC[AES256_GCM,data:YTUwlNjQp5t2DfkrM4P209IT+lGqqOp59/pJq67mvZHvY1pFOlm+AAoRdIcympKOBJgzj4k2N4XsVlbVZBbP3i9eogQ1JLKYc+LeVCm4XN6D65Ox9T9F4SccmZ3sN2pKweU6cMwhgvUTQXdAgnlLBJHW4ksDKRenyUNV7dl3zoE=,iv:eAfwLT5zSuWAWmRu/w+tc7ubhMyrIhDOcI5cc8IMD1Y=,tag:7a57bA1qY4Efe8yQ6swz9g==,type:str]
     pgp: []
     encrypted_regex: ^(.*[Nn]h.*)$
     version: 3.8.1
