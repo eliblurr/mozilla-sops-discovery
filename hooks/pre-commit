@@ -86,7 +86,7 @@ try:
             continue
         if result.returncode != 0:
             raise Exception(f"Encryption failed: {file}")
-        run_command(f"git add {file}")
+        # run_command(f"git add {file}")
 
 except Exception as e:
     print(f"Error: {e}")
