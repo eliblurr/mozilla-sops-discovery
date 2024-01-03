@@ -5,7 +5,8 @@ metadata:
 type: Opaque
 data:
     username: john-carlson
-    nh: ENC[AES256_GCM,data:zzyl,iv:RJv+/V76qqyMYinfDv94LGjNtv71xA5/eYpX9AnHtCw=,tag:EIdHfx5jc2obEXlu+n/LmQ==,type:str]
+    password: kjhgf
+    nh: ENC[AES256_GCM,data:VpIO7dal,iv:PfmTA7q2kV5qbcjfvtWfFArlPqxFtI/bZdzeYc9YXw0=,tag:mpBK9Tmj8kssiW6JQt4OjQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -15,14 +16,14 @@ sops:
         - recipient: age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBSTHc3dlNxVG9nYnQ2Nkxs
-            WHNENkVqWjJkeUIyT3RNV2lQS045YmhZZTFnCk5kSE15bUpmRmJTOGs3a0JacCtJ
-            NG1LRnRpdlcveWMxdmwrbXpYWU1TUzgKLS0tIFhBOXRqOU1rRkNNZUdPaWk5UDN0
-            SHYwMHFzbEx4UE1TbDZzRU1iVjdMUncKqdGPjwEX8lsmNGxhJLUtY6khcRK95ui9
-            FTdp+dsspe8IKv/Sxbw0ajYZhgI0ilKIPNLbrCRVoWfgys+Y/IForQ==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBadWFUNFE3U3RNbENnYVRp
+            ZndmTXhPcXBXZlg1bzNxaXVNNGl2dTIyNVh3CmNMYU9Oc0c3MnlVbnlpRzJZN2x6
+            R1BwVXMzUHExLzNUZGVVM0dZUXlVRFEKLS0tIDBKRTJtc3QzZmxrMXh2SERuZGFl
+            WDBEQmhCSklmMFpMYnY1VlcyNjZEd3MKEfGLaK4F1YbcL3LPPenrNkl2asuUJGKE
+            SWQ7dYteBj+KGRZj9KIW/MroOCmQqS32c9O0yQYlppjpIl6JUXSSPA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-01-03T19:17:15Z"
-    mac: ENC[AES256_GCM,data:SR6Sj0JlWn/kF9LDv2t5SJGtXu/aGDg5p2KQtbdXbAu6aXDls8kNxX9gx3XGadow4rgtq3H0SrBIffLz3nixwbKZrgzU7Na5beUqir+BEWjHbIWjSnUsL23m4QtQ1jy/RjJn11bGXjSke5PlGzf7g9UWymn3JGFQQMvSqea+lzc=,iv:gpBb3wN0JE0WXFod1EQX4vW60CCN9qRA5d2qtcLBky8=,tag:xBf0x6Ugmxaqssx2QOEaVA==,type:str]
+    lastmodified: "2024-01-03T19:17:43Z"
+    mac: ENC[AES256_GCM,data:koiB956n98xlcYP3R/13FOLY1qAlTEGV+Txl9do5jJQheVwlI7wVODj4CR7zzRJWMfLvk7z5pJu+LWu6az6XhLAhKyKu8VptAEK7E8nJV7pzbudpnG4nnZijWqt75DPprjyfYtRqyozp6PwgoImt/d0BxwnjQjrFovlfuns4jRM=,iv:WMNM1DKsksXllOQHbc3HArtmbrynF+/ppymX+B0Jdsg=,tag:gjRJl4bxLg3NoStuSJHdGQ==,type:str]
     pgp: []
     encrypted_regex: ^(.*[Nn]h.*)$
     version: 3.8.1
