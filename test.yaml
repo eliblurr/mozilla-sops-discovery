@@ -6,7 +6,7 @@ type: Opaque
 data:
     username: john-carlson
     password: kjhgf
-    nh: ENC[AES256_GCM,data:VpIO7dal,iv:PfmTA7q2kV5qbcjfvtWfFArlPqxFtI/bZdzeYc9YXw0=,tag:mpBK9Tmj8kssiW6JQt4OjQ==,type:str]
+    nh: ENC[AES256_GCM,data:mRk57TT2,iv:yfFhiw3aEc/ofp6Dh8m4cfUZ1tqw++VkGSEwqPthMAw=,tag:KdmeZgitCQCeU1GAgpRVsA==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -16,14 +16,14 @@ sops:
         - recipient: age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBadWFUNFE3U3RNbENnYVRp
-            ZndmTXhPcXBXZlg1bzNxaXVNNGl2dTIyNVh3CmNMYU9Oc0c3MnlVbnlpRzJZN2x6
-            R1BwVXMzUHExLzNUZGVVM0dZUXlVRFEKLS0tIDBKRTJtc3QzZmxrMXh2SERuZGFl
-            WDBEQmhCSklmMFpMYnY1VlcyNjZEd3MKEfGLaK4F1YbcL3LPPenrNkl2asuUJGKE
-            SWQ7dYteBj+KGRZj9KIW/MroOCmQqS32c9O0yQYlppjpIl6JUXSSPA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAvNjg5UlpyQnh0OGxTV0Ro
+            RDdpUkJ1eSt0VXNaeEV5UVpIS2tQME5DVzAwCnZNMWx3aUxMMGpXQXJ0eWgwKy9I
+            eFdYWitCWjdhaHMvOXRQSjhrY0hQZDgKLS0tIGQ1RTFkUzFNZDNLdzRaSGs5b1RL
+            Z09TcFE3R2Jxek8wdFBRcVVFKzdQNGMKe+y63gJJxLlQygXJP9DjNDFhd7Krdm+R
+            lF0WFjQ54vGkNJc0F6vEo8CcooyEv4LVRPIopNHoYOTCAjqU6fMUTQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-01-03T19:17:43Z"
-    mac: ENC[AES256_GCM,data:koiB956n98xlcYP3R/13FOLY1qAlTEGV+Txl9do5jJQheVwlI7wVODj4CR7zzRJWMfLvk7z5pJu+LWu6az6XhLAhKyKu8VptAEK7E8nJV7pzbudpnG4nnZijWqt75DPprjyfYtRqyozp6PwgoImt/d0BxwnjQjrFovlfuns4jRM=,iv:WMNM1DKsksXllOQHbc3HArtmbrynF+/ppymX+B0Jdsg=,tag:gjRJl4bxLg3NoStuSJHdGQ==,type:str]
+    lastmodified: "2024-01-03T19:19:53Z"
+    mac: ENC[AES256_GCM,data:uIRgxANWDGy1qbG9L9mfGpqTLhNGoe/ybZPwgoKwj4LMa/lABGDoI/8mH/GJ03X5W0ZaSQZL3fkVib+TLjUmimhKK2geqF0chpMsvd4TXfhikPZEfq5kyVMBDgiRDdN2loT5Jr9YKGVK6DrHliSXLp51cL/oc6UeoRq8zJXzdpM=,iv:PmI3YiyyvK5Yy65aDlcja/4MJzqdlxfAPtpsJ0/qAwM=,tag:yVR7GlH0fJipGS+pXU2TCQ==,type:str]
     pgp: []
     encrypted_regex: ^(.*[Nn]h.*)$
     version: 3.8.1
