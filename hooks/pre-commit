@@ -60,6 +60,8 @@ try:
 
     print("stashed changes")
 
+    print(os.environ.get("SOPS_CONFIG_PATH"))
+
     # Get the list of staged files (ACM - Added, Copied, Modified)
     result = run_command("git diff --cached --name-only --diff-filter=ACM", capture_output=True)
     files = result.stdout.strip().split('\n')
