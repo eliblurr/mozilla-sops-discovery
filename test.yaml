@@ -5,7 +5,7 @@ metadata:
 type: Opaque
 data:
     username: john-carlson
-    nh: ENC[AES256_GCM,data:i2QIec4g0VTUN39ltA==,iv:3ymxESVT0PCa90hpLEs52DA6cA7gCtQq4BdPMnNKa+g=,tag:fIH7jAO9l4utJnmu9+eEng==,type:str]
+    nh: ENC[AES256_GCM,data:zzyl,iv:RJv+/V76qqyMYinfDv94LGjNtv71xA5/eYpX9AnHtCw=,tag:EIdHfx5jc2obEXlu+n/LmQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -15,14 +15,14 @@ sops:
         - recipient: age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrK1pTQzdJNEh0dXhQUWhj
-            bHcrM1pvU1Q5UHB1NktHNzdkaVpxWVg5Z1U0CmZzTnVWM2FHVk5XMHJmM1AyRyt3
-            Tk9sTDVhbmhDUXk5WnZqYmlEL0tMeGsKLS0tIExDRXkwVTM3K2JGYkQxZExPbjkv
-            S1gvWHBkeFRNMHVianc4QktpWnN0LzAKkllQN3lLVyoLBSfV1Bd1oao96BaWIXYj
-            BOSBLE39FImYDWvZAF5IHbILdXwlyitAngzM8Wil8ja6PwRud3z6sw==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBSTHc3dlNxVG9nYnQ2Nkxs
+            WHNENkVqWjJkeUIyT3RNV2lQS045YmhZZTFnCk5kSE15bUpmRmJTOGs3a0JacCtJ
+            NG1LRnRpdlcveWMxdmwrbXpYWU1TUzgKLS0tIFhBOXRqOU1rRkNNZUdPaWk5UDN0
+            SHYwMHFzbEx4UE1TbDZzRU1iVjdMUncKqdGPjwEX8lsmNGxhJLUtY6khcRK95ui9
+            FTdp+dsspe8IKv/Sxbw0ajYZhgI0ilKIPNLbrCRVoWfgys+Y/IForQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-01-03T19:10:20Z"
-    mac: ENC[AES256_GCM,data:Djt15/qBpbwXSmMwEOIHfwnLAy9j3UHD7ZBK3oyHBfbTVeSPd/M6vrf9s2yqGAppm+pNsshTa5ZYJrgY56xVM1n+i3xKX6iV/9E+LjxiXzYYd1mSsveRFumOL6MStp7EhucBudnCR5rdZ3gIFvB6qEbDFTMYJV6F9bVS/0vnz4A=,iv:28xdM0HF1MIZyJqU/lhouAH4VsLHjRsiMhWPzxy9fMg=,tag:J33EQr12G1L6U+mqmW83pA==,type:str]
+    lastmodified: "2024-01-03T19:17:15Z"
+    mac: ENC[AES256_GCM,data:SR6Sj0JlWn/kF9LDv2t5SJGtXu/aGDg5p2KQtbdXbAu6aXDls8kNxX9gx3XGadow4rgtq3H0SrBIffLz3nixwbKZrgzU7Na5beUqir+BEWjHbIWjSnUsL23m4QtQ1jy/RjJn11bGXjSke5PlGzf7g9UWymn3JGFQQMvSqea+lzc=,iv:gpBb3wN0JE0WXFod1EQX4vW60CCN9qRA5d2qtcLBky8=,tag:xBf0x6Ugmxaqssx2QOEaVA==,type:str]
     pgp: []
     encrypted_regex: ^(.*[Nn]h.*)$
     version: 3.8.1
