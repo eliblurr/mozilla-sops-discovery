@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: mysecret
+type: Opaque
+data:
+    username: john-carlson
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age18k7h2zrtpd2u4uexz2yx9zhjd0al693rwdryqf0yqz6vpjwg7q5qj5vul0
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBEUUdaS2w4RnlpVkR3bUw0
+            OXRaZTZoQXdCaDBEV3I2QUVvSU5iS285bXhRCkxIUktIakcwbEpBNVdEdEJYYzhS
+            c3hwb1FmT2ZZYUx2UGdRaVNza1NHamcKLS0tIDVBekxPaGRMWlVDSW1zNEdBT3d6
+            UUZLdFVsTmJ4RDZCQ21yNk9KWkxLbDAKh+XOb4yudbwxYF+dtf8xjFx3JTLDmj/B
+            SyvOqQjRaR8wBvv+6NxhDO3NrpIWRHW8eyxbKsWhfCGf80zOQFMtJg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-01-03T19:22:16Z"
+    mac: ENC[AES256_GCM,data:0oT36270yrLMf35S2gtIJYFMa6BU686KRB6dv/aJXp6O4cBLAgFz4w/wQu/vepVlXYfenG58rVh/BfYYPrxutcNovwjy/R9Ze6Iab9ysEzEl3NXr/mZEB1XPtYetY887zmnf9DIUNNQwO1zQNdreiG/t5WIpX6ZB9yPai9cmSd4=,iv:0h7tpEETZHfFLHyvohZO1tMdmk5ZzBSUdST9zJh+/6I=,tag:e7xegVXlTX5x6dQf20JRSw==,type:str]
+    pgp: []
+    encrypted_regex: ^(.*[Nn]h.*)$
+    version: 3.8.1
