@@ -34,7 +34,9 @@ def read_sops_config():
         data = yaml.safe_load(file)
 
     yamls = [file for file in [ *(Path('.').rglob('*.yml')), *(Path('.').rglob('*.yaml'))] if os.path.isfile(file)]
-    
+
+    print(len(yamls))
+
     if "creation_rules" in data:
         data=data["creation_rules"]
         for item in data:
